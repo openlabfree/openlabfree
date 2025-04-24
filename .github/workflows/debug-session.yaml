@@ -1,0 +1,17 @@
+name: Debug Session
+
+on:
+  workflow_dispatch:
+
+jobs:
+  debug:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60  # Optional: Set timeout so the job doesn't hang indefinitely
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          limit-access-to-actor: false  # Set to true if you want to restrict to only the triggerer
